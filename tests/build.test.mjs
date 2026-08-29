@@ -66,6 +66,16 @@ test("renderer rejects missing or duplicate markers and heading drift", () => {
   assert.throws(() => renderArticle({ site, article, template, content: `${content}<h1>Лишний</h1>` }), /exactly one h1/);
 });
 
+test("renderer can keep the shared footer at the article-owned design position", () => {
+  const inlineFooterTemplate = template.replace("<!-- BLOG-KIT:FOOTER -->", "");
+  const inlineFooterContent = content.replace("</article>", "<!-- BLOG-KIT:FOOTER --></article>");
+  const { html } = renderArticle({ site, article, template: inlineFooterTemplate, content: inlineFooterContent });
+  const footerIndex = html.indexOf('<footer class="article-footer"');
+  const articleCloseIndex = html.lastIndexOf("</article>");
+  assert.ok(footerIndex > 0 && footerIndex < articleCloseIndex);
+  assert.equal((html.match(/<footer class="article-footer"/g) ?? []).length, 1);
+});
+
 test("footer preserves design weight and uses only safe placeholders", () => {
   const { html } = renderArticle({ site, article, template, content });
   assert.match(html, /vash@email\.tut/);

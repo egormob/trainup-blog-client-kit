@@ -1,6 +1,6 @@
 import { validateArticle, validateSiteConfig } from "./contracts.mjs";
 
-const MARKERS = ["HEAD", "ARTICLE", "FOOTER", "ANALYTICS-SLOT"];
+const TEMPLATE_MARKERS = ["HEAD", "ARTICLE", "ANALYTICS-SLOT"];
 
 function escapeHtml(value) {
   return String(value)
@@ -23,12 +23,20 @@ function routeUrl(site, article) {
   return `${site.baseUrl}/${article.route}/`;
 }
 
-function assertTemplate(template) {
-  for (const marker of MARKERS) {
+function markerCount(source, marker) {
+  const token = `<!-- BLOG-KIT:${marker} -->`;
+  return source.split(token).length - 1;
+}
+
+function assertTemplate(template, content) {
+  for (const marker of TEMPLATE_MARKERS) {
     const token = `<!-- BLOG-KIT:${marker} -->`;
-    const count = template.split(token).length - 1;
+    const count = markerCount(template, marker);
     if (count !== 1) throw new Error(`Template must contain exactly one ${marker} marker`);
+    if (content.includes(token)) throw new Error(`Article content contains a reserved ${marker} marker`);
   }
+  const footerCount = markerCount(template, "FOOTER") + markerCount(content, "FOOTER");
+  if (footerCount !== 1) throw new Error("Template and article content must contain exactly one FOOTER marker in total");
 }
 
 function renderHead(site, article) {
@@ -98,8 +106,7 @@ export function renderArticle(input) {
   const article = validateArticle(input.article);
   const template = String(input.template ?? "");
   const content = String(input.content ?? "");
-  assertTemplate(template);
-  if (MARKERS.some((marker) => content.includes(`BLOG-KIT:${marker}`))) throw new Error("Article content contains a reserved template marker");
+  assertTemplate(template, content);
   const headingCount = (content.match(/<h1\b/gi) ?? []).length;
   if (headingCount !== 1) throw new Error("Article content must contain exactly one h1");
   if ((content.match(/<article\b/gi) ?? []).length !== 1) throw new Error("Article content must contain exactly one article element");

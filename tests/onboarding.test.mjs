@@ -103,6 +103,23 @@ test("agent instructions collect secrets outside chat and advance one action at 
   assert.match(text, /значок терминала[^\n]+>_/i);
 });
 
+test("agent instructions protect the accepted responsive design until the owner asks", async () => {
+  const [agents, workflow] = await Promise.all([
+    readFile(path.join(publicRoot, "AGENTS.md"), "utf8"),
+    readFile(
+      path.join(publicRoot, ".agents", "skills", "trainup-blog-client-kit", "references", "article-workflow.md"),
+      "utf8",
+    ),
+  ]);
+  const combined = `${agents}\n${workflow}`;
+  assert.match(combined, /дизайн[^\n]+принят[^\n]+эталон/i);
+  assert.match(combined, /без прямой просьбы владельца[^\n]+не меняй/i);
+  assert.match(combined, /базового шаблона футер расположен отдельно/i);
+  assert.match(combined, /продвинутого шаблона футер расположен внутри/i);
+  assert.match(combined, /до 390 px[\s\S]{0,100}до 380 px/i);
+  assert.match(combined, /мобильн[\s\S]{0,100}планшетн[\s\S]{0,100}широк/i);
+});
+
 test("a clean folder can create, build and verify its first article", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "trainup-blog-kit-clean-"));
   await mkdir(path.join(root, "blog"), { recursive: true });

@@ -73,9 +73,21 @@ const forbidden = [
   "how-to-switch-on-state-of-power",
 ];
 
-for (const [name, expectedTitle, cta, price] of [
-  ["basic", "Базовый шаблон", "Получить сейчас", null],
-  ["advanced", "Продвинутый", "К Покупке", "30 000 руб."],
+for (const [name, expectedTitle, expectedDescription, cta, price] of [
+  [
+    "basic",
+    "Как быстро получить первые кейсы и кратно увеличить продажи",
+    "Как получить первые кейсы во время обучения, усилить мотивацию участников и использовать результаты для роста продаж.",
+    "Получить сейчас",
+    null,
+  ],
+  [
+    "advanced",
+    "Как «включить» состояние силы",
+    "Как найти фоновое эмоциональное состояние, которое усиливает продажи, выступления и желание клиентов выбирать вас.",
+    "К покупке",
+    "30 000 руб.",
+  ],
 ]) {
   test(`${name} contains the approved copy and no forbidden runtime`, async () => {
     const built = await buildExample(name);
@@ -84,6 +96,7 @@ for (const [name, expectedTitle, cta, price] of [
     const completeSource = `${built.html}\n${styles}\n${interactions}`;
     assert.match(styles, /\.skip-link[\s\S]*translateY\(-180%\)/);
     assert.equal(built.article.title, expectedTitle);
+    assert.equal(built.article.description, expectedDescription);
     assert.match(built.html, new RegExp(`<h1[^>]*>${expectedTitle}</h1>`));
     assert.match(built.html, new RegExp(cta));
     assert.match(built.html, /https:\/\/t\.me\/egor_bulygin/);
@@ -98,6 +111,18 @@ for (const [name, expectedTitle, cta, price] of [
     assert.doesNotMatch(built.html, /ИНН\s+(?!0{12}\b)\d{12}\b|ОГРН\s+(?!0{15}\b)\d{15}\b/);
     assert.equal((built.html.match(/<h1\b/gi) ?? []).length, 1);
     assert.equal((built.html.match(/<!-- BLOG-KIT:ANALYTICS-SLOT -->/g) ?? []).length, 1);
+    if (name === "basic") {
+      assert.match(styles, /\.page\s*>\s*\.article-footer\s*\{[^}]*border-top:\s*0;/s);
+      assert.match(styles, /\.page\s*>\s*\.article-footer::before\s*\{[^}]*width:\s*min\(78%, var\(--measure\)\);[^}]*background:\s*rgba\(20, 20, 20, 0\.055\);/s);
+    }
+    if (name === "advanced") {
+      assert.match(styles, /\.proof-shot\s*\{[^}]*width:\s*min\(100%, 390px\);[^}]*margin:\s*22px auto 0;/s);
+      assert.match(styles, /\.tariff-button\s*\{[^}]*text-decoration:\s*none;/s);
+      assert.match(styles, /@media print[\s\S]*\.reviews-controls\s*,\s*\.tariff-button\s*\{[^}]*display:\s*none !important;/s);
+      const footerIndex = built.html.indexOf('<footer class="article-footer"');
+      const articleCloseIndex = built.html.lastIndexOf("</article>");
+      assert.ok(footerIndex > 0 && footerIndex < articleCloseIndex, "advanced footer must stay inside the article card");
+    }
   });
 
   test(`${name} has a closed local asset inventory`, async () => {
@@ -122,6 +147,6 @@ test("advanced keeps a single static commercial price and Telegram CTAs", async 
   assert.ok(ctas.length >= 3);
   for (const [, href, label] of ctas) {
     assert.equal(href, "https://t.me/egor_bulygin");
-    assert.equal(label.trim(), "К Покупке");
+    assert.equal(label.trim(), "К покупке");
   }
 });

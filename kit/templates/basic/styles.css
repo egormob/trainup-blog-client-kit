@@ -419,6 +419,16 @@ strong {
   width: min(100%, var(--wide));
   margin: 18px auto 0;
   padding: 22px var(--gutter);
+  border-top: 0;
+}
+
+.page > .article-footer::before {
+  display: block;
+  width: min(78%, var(--measure));
+  height: 1px;
+  margin: -22px auto 22px;
+  background: rgba(20, 20, 20, 0.055);
+  content: "";
 }
 
 .article-footer__contacts,

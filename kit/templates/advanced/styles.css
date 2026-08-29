@@ -300,6 +300,11 @@ strong {
 }
 
 .proof-shot {
+  width: min(100%, 390px);
+  margin: 22px auto 0;
+}
+
+.proof-shot {
   padding: 7px;
   border: 1px solid rgba(20, 20, 20, 0.08);
   border-radius: 16px;
@@ -510,6 +515,7 @@ strong {
 }
 
 .tariff-button {
+  text-decoration: none;
   display: inline-flex;
   width: auto;
   min-height: 48px;
@@ -1134,6 +1140,10 @@ strong {
     gap: 34px;
   }
 
+  .proof-shot {
+    width: min(100%, 380px);
+  }
+
   .disclosure__summary {
     min-height: 72px;
     grid-template-columns: minmax(0, 1fr) 44px;
@@ -1289,10 +1299,9 @@ strong {
   .article-card {
     border: 0;
     box-shadow: none;
-  }}
+  }
 
-.page > .article-footer {
-  width: min(100%, var(--wide));
-  margin: 18px auto 0;
-  border-radius: var(--radius-large);
-}
+  .reviews-controls,
+  .tariff-button {
+    display: none !important;
+  }}
