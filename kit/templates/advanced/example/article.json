@@ -1,0 +1,29 @@
+{
+  "id": "advanced-template",
+  "route": "templates/advanced",
+  "template": "advanced",
+  "title": "Продвинутый",
+  "description": "Продвинутый адаптивный шаблон статьи с коммерческими и доказательными блоками.",
+  "published": "2026-08-29",
+  "modified": "2026-08-29",
+  "tags": [
+    "шаблон статьи",
+    "продвинутый шаблон"
+  ],
+  "socialImage": "/templates/advanced/assets/social/egor-bulygin-trainup-og.jpg",
+  "geo": true,
+  "variants": [
+    {
+      "id": "telegram-example",
+      "match": {
+        "utm_source": "telegram"
+      },
+      "set": {
+        "hero.title": {
+          "text": "Продвинутый — версия для Telegram"
+        }
+      }
+    }
+  ],
+  "assets": {}
+}

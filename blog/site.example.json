@@ -1,0 +1,18 @@
+{
+  "siteName": "Мой блог",
+  "baseUrl": "https://example.website.yandexcloud.net",
+  "language": "ru",
+  "author": {
+    "name": "Автор блога"
+  },
+  "footer": {
+    "phone": "+7 (000) 000-00-00",
+    "email": "vash@email.tut",
+    "inn": "000000000000",
+    "ogrn": "000000000000000",
+    "telegramUrl": "https://t.me/egor_bulygin",
+    "offerUrl": "https://getcourse.ru/blog/1209778#oferta",
+    "privacyUrl": "https://getcourse.ru/blog/1209778#politika-obrabotki"
+  },
+  "geoDefault": true
+}

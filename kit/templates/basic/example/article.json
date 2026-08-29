@@ -1,0 +1,29 @@
+{
+  "id": "basic-template",
+  "route": "templates/basic",
+  "template": "basic",
+  "title": "Базовый шаблон",
+  "description": "Базовый адаптивный шаблон статьи с текстом, фотографиями и призывом к действию.",
+  "published": "2026-08-29",
+  "modified": "2026-08-29",
+  "tags": [
+    "шаблон статьи",
+    "базовый шаблон"
+  ],
+  "socialImage": "/templates/basic/assets/dmitry.jpeg",
+  "geo": true,
+  "variants": [
+    {
+      "id": "telegram-example",
+      "match": {
+        "utm_source": "telegram"
+      },
+      "set": {
+        "hero.title": {
+          "text": "Базовый шаблон — версия для Telegram"
+        }
+      }
+    }
+  ],
+  "assets": {}
+}

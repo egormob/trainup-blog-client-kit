@@ -1,0 +1,16 @@
+{
+  "name": "trainup-blog-client-kit",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test",
+    "doctor": "node scripts/blog-kit.mjs doctor",
+    "build": "node scripts/blog-kit.mjs build",
+    "verify": "node scripts/verify-package.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
