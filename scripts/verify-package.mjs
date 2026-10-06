@@ -23,7 +23,7 @@ for (const relative of required) await access(path.join(publicRoot, relative));
 const instructions = `${await readFile(path.join(publicRoot, "AGENTS.md"), "utf8")}\n${await readFile(path.join(publicRoot, "README.md"), "utf8")}`;
 assert.match(instructions, /Только на этом компьютере[^\n]*рекомендуется/);
 assert.match(instructions, /Локально на компе \+ Гитхаб/);
-assert.doesNotMatch(instructions, /локальн(?:ый|ого|ом)\s+Git|необязательн|\bremote\b|gh auth|gh repo|GitHub CLI/i);
+assert.doesNotMatch(instructions, /локальн(?:ый|ого|ом)\s+Git|необязательн[^\n]*Git|\bremote\b|gh auth|gh repo|GitHub CLI/i);
 
 const temporaryRoot = await mkdtemp(path.join(os.tmpdir(), "trainup-blog-kit-verify-"));
 try {
@@ -34,6 +34,7 @@ try {
   await initProject(temporaryRoot, { siteName: "Проверочный блог" });
   await createArticle(temporaryRoot, { slug: "basic-example", template: "basic" });
   await createArticle(temporaryRoot, { slug: "advanced-example", template: "advanced" });
+  await createArticle(temporaryRoot, { slug: "consent-example", template: "consent" });
   const manifest = await buildProject(temporaryRoot);
   const verification = await verifyProject(temporaryRoot);
   assert.equal(verification.ok, true);
@@ -41,6 +42,7 @@ try {
     "index.html",
     "articles/basic-example/index.html",
     "articles/advanced-example/index.html",
+    "articles/consent-example/index.html",
     "sitemap.xml",
     "feed.xml",
     "articles.json",

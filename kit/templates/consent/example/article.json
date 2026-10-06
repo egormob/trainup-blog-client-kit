@@ -1,0 +1,29 @@
+{
+  "id": "consent-template",
+  "route": "templates/consent",
+  "template": "consent",
+  "title": "Ваше предложение",
+  "description": "Описание результата и условий вашего предложения.",
+  "published": "2026-10-06",
+  "modified": "2026-10-06",
+  "tags": [
+    "лендинг",
+    "согласия"
+  ],
+  "socialImage": "/templates/consent/assets/hero/ai-team-cover.webp",
+  "geo": true,
+  "variants": [
+    {
+      "id": "telegram-example",
+      "match": {
+        "utm_source": "telegram"
+      },
+      "set": {
+        "hero.title": {
+          "text": "Ваше предложение — для посетителей из Telegram"
+        }
+      }
+    }
+  ],
+  "assets": {}
+}

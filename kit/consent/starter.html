@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru" data-article-id="{{slug}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="template-version" content="consent-policy-landing-v1.2.0">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <meta name="robots" content="noindex, nofollow, nosnippet, noarchive, noimageindex">
+  <link rel="canonical" href="{{pageUrl}}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{pageUrl}}">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:image" content="{{pageUrl}}assets/hero/ai-team-cover.webp">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="{{brandName}}">
+  <link rel="icon" type="image/svg+xml" href="./assets/brand/favicon.svg">
+  <link rel="stylesheet" href="./template.css">
+  <link rel="stylesheet" href="./consent.css">
+  <link rel="stylesheet" href="./landing.css">
+<script>window.__IIK_CONSENT_CONFIG__ = {{consentConfig}};
+{{guard}}</script></head>
+<body>
+  <a class="skip-link" href="#main-content">Перейти к содержанию</a>
+  <main class="page" id="main-content">
+    <article class="article-shell" data-section-id="article">
+      <div class="article-card">
+        <div class="article-masthead" data-section-id="cover">
+          <a class="article-brand" href="{{brandUrl}}" aria-label="{{brandName}}">{{brandName}}</a>
+          <figure class="article-cover">
+            <img src="./assets/hero/ai-team-cover.webp"
+                 srcset="./assets/hero/ai-team-cover-768.webp 768w, ./assets/hero/ai-team-cover.webp 2172w"
+                 sizes="(max-width: 760px) 100vw, (max-width: 1060px) calc(100vw - 80px), 980px"
+                 width="2172" height="724" decoding="async" fetchpriority="high"
+                 alt="{{heroAlt}}">
+          </figure>
+        </div>
+        <div class="article-inner">
+          <div class="offer-hero" data-section-id="hero">
+            <p class="hero-intro" data-copy-intro>{{intro}}</p>
+            <ul class="hero-benefits" aria-label="Условия разбора">{{benefitsItems}}</ul>
+            <p class="hero-description" data-copy-lead>{{lead}}</p>
+          </div>
+          {{controls}}
+          <nav class="article-cta-row channel-actions" aria-label="Выберите, где начать разбор" data-section-id="channels">
+            <a class="tariff-button article-cta channel-link" data-channel="telegram" href="{{telegramUrl}}" target="_blank" rel="noopener"><span>Начать в Телеграм</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+            <a class="tariff-button article-cta channel-link" data-channel="vk" href="{{vkUrl}}" target="_blank" rel="noopener"><span>Начать в ВК</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          </nav>
+        </div>
+        {{footer}}
+      </div>
+    </article>
+  </main>
+
+  <script src="./cookie-consent.js" defer></script>
+  <script src="./consent-analytics.js" defer></script>
+</body>
+</html>

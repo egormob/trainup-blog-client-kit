@@ -1,0 +1,22 @@
+{
+  "id": "consent-policy-landing",
+  "version": "1.2.0",
+  "sourceTag": "iik-ai-marketer-consent-release-v1.1.3",
+  "sourceCommit": "825de63739040c950ab3fd34dfab58d29e4705e4",
+  "files": {
+    "README.md": "1421497ddbc31270dd1cbd4153d68bbddfce1fc96da5a18c62a340e85c86d9b2",
+    "assets/brand/favicon.svg": "6a6304c63950682d81dbdaa84626871dc7600e1b5da0e62f2f67a92e3520926e",
+    "assets/hero/ai-team-cover-768.webp": "e3ac4e5873990dd5f80164842733965b91f47365c8f24f05a76df7b1c1a7bc56",
+    "assets/hero/ai-team-cover.webp": "97dd1d8937a9acb617c4a119e542397c0e5916785028b840d05ec8bc893144f8",
+    "consent-analytics.js": "59fbc72f70a9caf7f7aac9e47771e5e11ec79a0b4655c1680e2cae3347cf80a2",
+    "consent.css": "11f007b5e8da50544cd0638e6c9a9ff295c24bf055fe77d8f6d6d12d45fb3584",
+    "controls.html": "63e1184e0ab3d17478370c8757d31d3b6b6465c52bafe14bedbd8d71a5522a7b",
+    "cookie-consent.js": "1fee34cbeb91b563b5ae71da02e02cd05830a5cffcf0758800d82370e0dc77c7",
+    "footer.html": "b4eef4ac9e24328747e1fd8aac49317cfb296333ba5c1b68cf91a60f7467f0a7",
+    "guard.js": "1e3ecc4b70ee442bdc509de8e61f6f39af3ccf934162229fa1ec1111a19849ec",
+    "landing.css": "6aaf945dcd62e9c2ea449baf338bbc1efc8bae10becb31c05e8d76a20c2c022b",
+    "starter.html": "994215d4509ef7a96afa868cd9707d3e6f5ce79f366df737fc2e5eb4ef523541",
+    "template.css": "79a2865d942139403f4a3e2e157783de5c1fd69c02ed2c8a6c2530113472a6b9"
+  },
+  "distribution": "neutral-client-branding"
+}

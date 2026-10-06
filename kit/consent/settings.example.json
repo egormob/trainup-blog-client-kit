@@ -1,0 +1,33 @@
+{
+  "slug": "example-consent-landing",
+  "counterId": 0,
+  "newsletterEnabled": false,
+  "serviceIdsEnabled": false,
+  "pageUrl": "https://example.invalid/landing/",
+  "policyUrl": "https://example.invalid/legal/policy.html",
+  "consentUrl": "https://example.invalid/legal/consent.html",
+  "offerUrl": "https://example.invalid/legal/offer.html",
+  "advertisingConsentUrl": "https://example.invalid/legal/advertising-consent.html",
+  "consentVersion": "example-2026-10-05-v1",
+  "telegramUrl": "https://example.invalid/telegram/",
+  "vkUrl": "https://example.invalid/vk/",
+  "buttonGoal": "Example-Button",
+  "readyGoal": "Example-PageReady",
+  "title": "Название нового лендинга",
+  "description": "Описание нового предложения для поисковой системы и превью ссылки.",
+  "intro": "Первый абзац нового предложения.",
+  "lead": "Кратко объясните, что посетитель получит после перехода.",
+  "benefits": [
+    "Быстро",
+    "Удобно",
+    "Бесплатно"
+  ],
+  "brandName": "Пример",
+  "brandUrl": "https://example.invalid/",
+  "operatorRequisites": "Название оператора · ИНН · ОГРН/ОГРНИП",
+  "contactTelegramUrl": "https://example.invalid/contact/",
+  "phone": "+79990000000",
+  "phoneDisplay": "+7 (999) 000-00-00",
+  "email": "info@example.invalid",
+  "heroAlt": "Описание обложки нового лендинга"
+}

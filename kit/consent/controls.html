@@ -1,0 +1,24 @@
+          <div class="channel-consent">
+            <p id="consent-notice" class="consent-notice" role="alert" data-consent-notice hidden>Разрешите аналитику или настройте cookie.</p>
+            <div class="channel-consent__label">
+              <input id="channel-consent" type="checkbox" aria-describedby="consent-notice">
+              <span class="channel-consent__copy"><label for="channel-consent">Даю <a href="{{consentUrl}}" target="_blank" rel="noopener">согласие на обработку персональных данных и использование cookie</a>.</label> <button class="cookie-settings-link" type="button" data-cookie-settings aria-haspopup="dialog" aria-controls="cookie-settings">Настроить</button>.{{subscriptionCopy}}</span>
+            </div>
+          </div>
+
+  <dialog class="cookie-dialog" id="cookie-settings" aria-labelledby="cookie-settings-title" aria-describedby="cookie-settings-purpose cookie-settings-description">
+    <div class="cookie-dialog__header">
+      <h2 id="cookie-settings-title">Настройки куки</h2>
+      <button type="button" class="cookie-dialog__close" data-cookie-close aria-label="Закрыть настройки куки">×</button>
+    </div>
+    <div class="cookie-dialog__scroll">
+      <p class="cookie-dialog__purpose" id="cookie-settings-purpose">Cookie помогают нам анализировать рекламу, чтобы в дальнейшем показывать её тем, кому она может быть более интересна.</p>
+      <p id="cookie-settings-description">Выберите, что разрешить. Пункты, необходимые для использования сервисов, невозможно отключить.</p>
+      <div class="cookie-dialog__list" data-cookie-list></div>
+      <p class="cookie-dialog__note">Фактический набор cookies зависит от браузера. Данные об использовании сайта передаются в Яндекс.Метрику. <a href="{{consentUrl}}" target="_blank" rel="noopener">Согласие на обработку персональных данных</a></p>
+    </div>
+    <div class="cookie-dialog__footer">
+      <button type="button" class="cookie-dialog__accept" data-cookie-accept>Принять все</button>
+      <button type="button" class="cookie-dialog__save" data-cookie-save>Сохранить выбор</button>
+    </div>
+  </dialog>

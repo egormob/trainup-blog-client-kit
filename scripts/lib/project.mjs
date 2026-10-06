@@ -6,10 +6,11 @@ import { promisify } from "node:util";
 import { renderArticle } from "./build.mjs";
 import { buildDiscovery } from "./discovery.mjs";
 import { safeResolve, sha256, writeUserFile } from "./files.mjs";
+import { loadConsent, renderConsent, insertConsent } from "./consent.mjs";
 
 const execFileAsync = promisify(execFile);
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const TEMPLATES = new Set(["basic", "advanced"]);
+const TEMPLATES = new Set(["basic", "advanced", "consent"]);
 
 async function exists(target) {
   try {
@@ -70,7 +71,7 @@ function assertArticleInput(slug, template) {
   if (!SLUG.test(String(slug ?? ""))) {
     throw new Error("Адрес статьи должен состоять из строчных латинских букв, цифр и дефисов");
   }
-  if (!TEMPLATES.has(template)) throw new Error("Шаблон должен быть basic или advanced");
+  if (!TEMPLATES.has(template)) throw new Error("Шаблон должен быть basic, advanced или consent");
 }
 
 export async function createArticle(projectRoot, options = {}) {
@@ -131,6 +132,7 @@ async function listFiles(root, current = root) {
 export async function buildProject(projectRoot) {
   const root = path.resolve(projectRoot);
   const site = JSON.parse(await readFile(safeResolve(root, "blog/site.json"), "utf8"));
+  const consentSource = site.consent ? await loadConsent(safeResolve(root, 'kit/consent')) : null;
   const articleRoot = safeResolve(root, "blog/articles");
   const stage = safeResolve(root, ".blog-state/build-next");
   const output = safeResolve(root, "output");
@@ -152,7 +154,29 @@ export async function buildProject(projectRoot) {
     const rendered = renderArticle({ site, article, template, content, utmRuntimeSource: runtime });
     const destination = safeResolve(stage, article.route);
     await mkdir(destination, { recursive: true });
-    await writeFile(path.join(destination, "index.html"), rendered.html);
+    let markup = rendered.html;
+    if (site.consent) {
+      const settings = { ...site.consent, ...article.consent, slug: article.id };
+      const component = renderConsent(consentSource, settings);
+      if (!markup.includes('<!-- LANDING_CONSENT -->')) {
+        let inserted = false;
+        markup = markup.replace(/<a\b[^>]*data-blog-event="cta_click"[^>]*>/gi, tag => {
+          const prepared = tag.replace(/\s(?:target|rel|data-consent-cta)="[^"]*"/g, '').replace(/>$/, ' data-consent-cta="signup" target="_blank" rel="noopener">');
+          if (inserted) return prepared;
+          inserted = true;
+          return '<div class="blog-consent-slot" style="max-width:360px"><!-- LANDING_CONSENT --></div>' + prepared;
+        });
+        if (!inserted) throw new Error('Add a LANDING_CONSENT marker and mark the intended CTA before building');
+      }
+      markup = markup.replace(/<footer\b[^>]*class="article-footer"[^>]*>[\s\S]*?<\/footer>/, '<!-- LANDING_LEGAL_FOOTER -->');
+      if (markup.includes('href="https://t.me/egor_bulygin"') && !component.values.telegramUrl) throw new Error('Configure your own telegramUrl before building');
+      markup = markup.replace(/href="https:\/\/t\.me\/egor_bulygin"/g, () => 'href="' + component.values.telegramUrl + '"');
+      markup = insertConsent(markup, component);
+    } else {
+      if (article.template === 'consent') throw new Error('Configure site.consent before using the consent template');
+      markup = markup.replace('<!-- LANDING_CONSENT -->', '');
+    }
+    await writeFile(path.join(destination, "index.html"), markup);
     await copyTemplateFiles(templateRoot, destination);
     if (rendered.files.has("assets/blog-kit-utm-runtime.js")) {
       const runtimeTarget = safeResolve(stage, "assets/blog-kit-utm-runtime.js");
