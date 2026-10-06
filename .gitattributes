@@ -1,0 +1,2 @@
+# Preserve exact bytes of the checksum-pinned consent distribution on every OS.
+kit/consent/** -text
