@@ -49,3 +49,10 @@ test('latest accepted26Oct program is created separately from13Oct and the29Oct 
  assert.match(html,/Лендинги в один запрос/);assert.match(html,/department-device-benefits/);
  assert.doesNotMatch(html,/ltBlock\d+|data-calendar-(?:offer|popup|block)="[^"]+"/);
 });
+test('review slot paths carry no customer metadata, even with valid SVG and checksum',async()=>{
+ const {scanProductionTemplates}=await import('../scripts/scan-production-templates.mjs');const {createHash}=await import('node:crypto');
+ const dir=await mkdtemp(path.join(tmpdir(),'neutral review names '));const name='templates/trainup-video-single/assets/gallery/review-person.svg';
+ const text='<svg xmlns="http://www.w3.org/2000/svg"></svg>';await mkdir(path.join(dir,path.dirname(name)),{recursive:true});await writeFile(path.join(dir,name),text);
+ await writeFile(path.join(dir,'public-manifest.json'),JSON.stringify({schema:1,files:{[name]:createHash('sha256').update(text).digest('hex')}}));
+ const result=await scanProductionTemplates(dir);assert.equal(result.ok,false);assert(result.findings.some(x=>x.type==='personal-asset-name'));
+});

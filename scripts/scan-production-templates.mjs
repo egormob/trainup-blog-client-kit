@@ -28,6 +28,7 @@ export async function scanProductionTemplates(input){
   if(!info.isFile()){add('special-file',name,'Regular files only');continue;}
   if(name==='public-manifest.json')continue;
   const bytes=await readFile(full);found.set(name,hash(bytes));
+  if(name.includes('/assets/gallery/')&&!/\/example-review-\d{2}\.svg$/.test(name))add('personal-asset-name',name,'Review slots use neutral numbered paths');
   if(!allowed(name)||!(name in manifest.files))add('unlisted-file',name,'Not in this narrow profile');
   if(manifest.files[name]!==hash(bytes))add('checksum',name,'SHA256 mismatch');
   if(/\.(?:webp|png|jpe?g)$/i.test(name)){
@@ -36,6 +37,7 @@ export async function scanProductionTemplates(input){
   }
   if(!/\.(?:md|py|json|css|js|html|svg)$/.test(name)){add('file-type',name,'Unexpected payload type');continue;}
   const text=bytes.toString('utf8');
+  if(name.endsWith('.html')&&/data-case-id="(?!example-case-\d{2}")[^"]+"/.test(text))add('personal-case-id',name,'Case slots use neutral numbered identifiers');
   if(/\/Users\/[^/\s]+\/|\/home\/[^/\s]+\/|[A-Za-z]:\\Users\\|file:\/\//.test(text))add('personal-path',name,'Workstation path');
   if(/ИНН\s*\d{10,12}|ОГРН\s*\d{13,15}|t\.me\/egor_b|info@trainup\.ru|74957443791/.test(text))add('private-identity',name,'Private contact/legal identity');
   if(/(?:ghp_|github_pat_|sk-proj-|AKIA[A-Z0-9]{16}|-----BEGIN .*PRIVATE KEY)|["'](?:access_token|refresh_token|private_key|password)["']\s*:\s*["'][^"']{8}/.test(text))add('secret',name,'Credential-shaped value');
