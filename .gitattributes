@@ -1,2 +1,5 @@
 # Preserve exact bytes of the checksum-pinned consent distribution on every OS.
 kit/consent/** -text
+
+# Preserve every checksum-pinned production template byte on Windows.
+kit/production-templates/** -text
