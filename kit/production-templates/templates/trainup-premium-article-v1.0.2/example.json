@@ -1,0 +1,51 @@
+{
+  "title": "ИИ-директор — эталон TrainUp",
+  "slug": "premium-article-example",
+  "checkoutMode": "preview",
+  "sections": [
+    "hero",
+    "intro",
+    "outcomes",
+    "cta-before-diagram",
+    "diagram",
+    "cta-after-diagram",
+    "faq",
+    "composition",
+    "dates",
+    "pricing",
+    "reviews",
+    "trainer",
+    "footer"
+  ],
+  "calendar": {
+    "stages": [
+      {
+        "id": "full",
+        "until": null,
+        "prices": [
+          70000,
+          120000
+        ],
+        "fullPrices": [
+          70000,
+          120000
+        ],
+        "forms": [
+          {
+            "tariff": "months_3",
+            "offerId": null,
+            "blockId": null,
+            "popupCode": null
+          },
+          {
+            "tariff": "months_6",
+            "offerId": null,
+            "blockId": null,
+            "popupCode": null
+          }
+        ]
+      }
+    ]
+  },
+  "draft": true
+}

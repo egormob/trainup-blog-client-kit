@@ -1,0 +1,69 @@
+{
+  "sourceRepo": "https://github.com/egormob/landings",
+  "sourceCommit": "d945b1e4694e7f4d23feacf899942a1b34a22516",
+  "templates": {
+    "premium": {
+      "path": "templates/trainup-premium-article-v1.0.2",
+      "upstreamCommit": "3e84b7ffa2a8d83d0ea68cca77c44a2892db462a"
+    },
+    "single": {
+      "path": "templates/trainup-video-single",
+      "upstreamCommit": "422d8fb28d1d04a32f0a1335ed4fcc84a931ed03",
+      "sourceCommit": "ba896b13eb7ab51991a7cab1743874fd7b8f79ba"
+    },
+    "latest": {
+      "path": "templates/ai-director-latest-20261026",
+      "sourceCommit": "0f79daf095428fd8f39f21c62607d02df927c9da",
+      "sourcePath": "ai-production/landings/ai-production/source/page.html",
+      "sourceSHA256": "d672d2cf2fe2003225ae28c24776f32b50a2c2fe8f36cc5d90c1233d048a8aab",
+      "acceptedDate": "2026-10-26",
+      "laterConsumerCommit": "3db9a2d093a37f30c3cad4923b66223a718356c1",
+      "excludedDraftDate": "2026-10-29",
+      "reason": "26Oct accepted program with three departments, Base/Pro, callouts and device SVG differs materially from13Oct premium. 27Oct adds commercial installation; no29Oct draft promoted.",
+      "patches": [
+        "Accepted CSS/program/device SVG retained",
+        "Portraits/screenshots replaced by labelled geometric slots; owner contacts removed",
+        "Calendar/native mapping and OTO removed; preview action only; historical timers hidden",
+        "Actual own generated diagram retained; no external photo or font distribution"
+      ]
+    }
+  },
+  "sourceFiles": {
+    "templates/trainup-premium-article-v1.0.2/manifest.json": "9751495421bd1134e2395d37dd03ae85249d96ad3d789cf586ea55df3bb3f4d2",
+    "templates/trainup-premium-article-v1.0.2/components/hero.html": "4ff4bc333fa5e1d3e33470f41f67761210a515e87eaac25a6c6e9549cd1bf175",
+    "templates/trainup-premium-article-v1.0.2/components/intro.html": "079086ebfe302760141f88077769defcc72b8d2ace3e12c3b06fede732520ef5",
+    "templates/trainup-premium-article-v1.0.2/components/outcomes.html": "037e57ed607a45144437c3129dde3649f4b158206bc2bc7ac32abede5f122ffc",
+    "templates/trainup-premium-article-v1.0.2/components/cta-before-diagram.html": "26c9667c439f8d0e59168fa566f6271c66e0ae21f83c923bdc52cb830efa6608",
+    "templates/trainup-premium-article-v1.0.2/components/diagram.html": "623b1456dc07ea09b593e000775d1edef1b9b5612fb6dc859e0a569ebf97b274",
+    "templates/trainup-premium-article-v1.0.2/components/cta-after-diagram.html": "f4fbb3f3791f9f750e321005244d6fd134a0a977c3d484943f3664f71272456f",
+    "templates/trainup-premium-article-v1.0.2/components/faq.html": "a57467e169bc310e0634957449403a16372712a1edb7b0a063070a6b87f90ffe",
+    "templates/trainup-premium-article-v1.0.2/components/composition.html": "c07f308142cb1b69e3cdfd6e5d272540b0328486e91d34b79d1fb2479a7fdc85",
+    "templates/trainup-premium-article-v1.0.2/components/dates.html": "cc3d16af17600bf6e1d7508f14475dc7847f364cddf77cf38e6854cec8978aab",
+    "templates/trainup-premium-article-v1.0.2/components/pricing.html": "0b6614f3ce6c9740206cf2341386bd974a86838ef99676943c86474045c5f52b",
+    "templates/trainup-premium-article-v1.0.2/components/reviews.html": "ae31c5be2d608c4f00ff20bb99e042ab5a81e44ca3212787c293fa4417b5aa56",
+    "templates/trainup-premium-article-v1.0.2/components/trainer.html": "6c418e556b3b7231614752f02305b571b3955b289c177db4c67e262435142d41",
+    "templates/trainup-premium-article-v1.0.2/components/footer.html": "b1f3cc1a53591c77bc5c2b37f4d440b287b421829a6a88635deafcb7a0d8f086",
+    "templates/trainup-premium-article-v1.0.2/styles.css": "066faa9093adb6f1af3d1611938bbe5081a501369b0781a7e5a961f01604cf51",
+    "templates/trainup-premium-article-v1.0.2/runtime.js": "3ac978c342dc5259df44d3852d7c9238a28b577279f636c1137c7a63c271fa46",
+    "templates/trainup-premium-article-v1.0.2/getcourse-host.css": "79db3a3c434deaf3093df64a99220e0236617f9d0dcbf3e755727839326f9adc",
+    "templates/trainup-premium-article-v1.0.2/example.json": "9ee35ff1945c89a472895c154fb22dd728d35d55e2d1b93829d956cb9e304a8d",
+    "templates/trainup-premium-article-v1.0.2/assets/diagram/turbo-packaging-event-v3-c03f356d00b3.webp": "c03f356d00b3e5fc23796a110d5bc3ffe35a6636506dc5e67b9cb6f3f16a0cd3",
+    "templates/trainup-video-single/manifest.json": "2dda76fcf4763973bf40171ba8beb09cd6e946056cb5632570e9354eb6cb63b0",
+    "templates/trainup-video-single/index.html": "344b00981a6b50906f14bf2e7de7166bcc01113c6c4a9c4e9898b17d54695af2",
+    "templates/trainup-video-single/template.css": "79a2865d942139403f4a3e2e157783de5c1fd69c02ed2c8a6c2530113472a6b9",
+    "templates/trainup-video-single/landing.css": "2f925d8edd0ef72b912b3a7023a355db7b8f23da3145470e9ca44e6df84952b4",
+    "templates/trainup-video-single/player.js": "4cfa885bdf4f125613d4b998c03658bf2e4e5d85b6f1bed2f921e4a55ca00a6c",
+    "templates/trainup-video-single/gallery.js": "221fd883f51582efc0bb4746d0ecb8c2f0e73233d66306289ee043b8dc354bce",
+    "templates/trainup-video-single/notice.js": "c38059f2893eeea8f7a45c2ea800112f4cceb20a15163a96b4ae6264a7ae61c2",
+    "templates/trainup-video-single/scripts/serve.py": "a4b62a33c779978b7f7bbd26597401230ec882f9151fe02eef48fce0b32c6cf7",
+    "scripts/premium_article.py": "f74636b21789e6ed8a60f8f1ff0f8f879da73bcda11c64c226fbb239e338e8e7",
+    "scripts/create_video_page.py": "f44b4435fe74440f9f12363d5289ed492999bdfe113d802b20dbfb7c75ce5043"
+  },
+  "patches": [
+    "Public preview: no legal/account/payment/video IDs",
+    "Original CSS and runtime retained; portraits/customer screenshots replaced by geometric SVG slots; accepted diagram retained; personal author copy replaced",
+    "Premium checker verifies derivative files rather than excluded private reference archive",
+    "Single generator selects frozen1.0.0 and explicit external output instead of author source/sites",
+    "Python builder text I/O explicitly UTF-8 for Windows portability"
+  ]
+}

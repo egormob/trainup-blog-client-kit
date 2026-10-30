@@ -37,3 +37,7 @@ description: "Установить и вести TrainUp Blog Client Kit в Code
 - `references/security.md` — перед сборкой, публикацией, откатом или заменой файла.
 
 - `references/consent-installation.md` — новые страницы, перенос и проверка согласий.
+
+## Production-шаблоны
+
+По запросу ИИ-Директора или его исходного простого layout прочитай references/production-templates.md. Не подменяй их basic/advanced и не переписывай принятую геометрию.
